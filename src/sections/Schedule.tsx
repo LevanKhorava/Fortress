@@ -135,7 +135,7 @@ function Schedule() {
 
       <div className="relative mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-14">
         <SectionHeading
-          index="03"
+          index="02"
           eyebrow="Fixtures"
           title={
             <>
@@ -144,7 +144,7 @@ function Schedule() {
               the floor
             </>
           }
-          lead="Ten fixtures carry us from October to the new year. The Fortress opens its gates for six of them — the road takes us to Tkibuli, Zestaponi and Akhaltsikhe. The Superliga pauses in late November for a mid-season tournament, details still to be confirmed."
+          lead="Ten fixtures make up the Superleague 2026–27 first half. The Fortress opens its gates for five of them — the road takes us to Tbilisi's A Hall, Tkibuli, Zestafoni and Akhaltsikhe. Round 8 (4–6 December) is a bye."
         />
 
         {/* (A) Next game */}
@@ -154,7 +154,10 @@ function Schedule() {
           distance={34}
           className="mt-14 sm:mt-16 lg:mt-20"
         >
-          <article className="clip-bastion relative border border-ember-500/25 bg-ink-900">
+          <article
+            id="next-game"
+            className="clip-bastion relative scroll-mt-24 border border-ember-500/25 bg-ink-900"
+          >
             <img
               src={crowdDuotone}
               alt=""
@@ -376,13 +379,18 @@ function Schedule() {
         </ul>
 
         <Reveal from="up" delay={120} distance={16} className="mt-10">
-          <a
-            href="#contact"
-            className="group font-display inline-flex min-h-11 items-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-white/50 transition-colors duration-500 ease-[var(--ease-out-expo)] hover:text-ember-400 sm:text-sm"
-          >
-            Full season schedule
-            <Arrow className="h-4 w-4 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1.5" />
-          </a>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <a
+              href="#contact"
+              className="group font-display inline-flex min-h-11 items-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-white/50 transition-colors duration-500 ease-[var(--ease-out-expo)] hover:text-ember-400 sm:text-sm"
+            >
+              Full season schedule
+              <Arrow className="h-4 w-4 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1.5" />
+            </a>
+            <p className="nums text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-white/35 sm:text-xs">
+              All times local · Georgia (UTC+4)
+            </p>
+          </div>
         </Reveal>
       </div>
     </section>

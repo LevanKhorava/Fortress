@@ -20,28 +20,13 @@ interface Social {
 
 const socials: Social[] = [
   {
-    label: 'Black Fortress on X',
-    href: 'https://x.com/blackfortressbc',
-    path:
-      'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835' +
-      'L1.254 2.25H8.08l4.713 6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117Z',
-  },
-  {
     label: 'Black Fortress on Instagram',
-    href: 'https://instagram.com/blackfortressbc',
+    href: 'https://www.instagram.com/black_fortress_tbilisi/',
     path:
       'M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Z' +
       'm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Z' +
       'm4.5 3.6a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8Zm0 2a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8Z' +
       'm5.05-2.9a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z',
-  },
-  {
-    label: 'Black Fortress on YouTube',
-    href: 'https://youtube.com/@blackfortressbc',
-    path:
-      'M23 7.2a3 3 0 0 0-2.1-2.1C19 4.5 12 4.5 12 4.5s-7 0-8.9.6A3 3 0 0 0 1 7.2 31 31 0 0 0 .4 12' +
-      'a31 31 0 0 0 .6 4.8 3 3 0 0 0 2.1 2.1c1.9.6 8.9.6 8.9.6s7 0 8.9-.6a3 3 0 0 0 2.1-2.1' +
-      'a31 31 0 0 0 .6-4.8 31 31 0 0 0-.6-4.8ZM9.8 15.4V8.6l5.9 3.4-5.9 3.4Z',
   },
 ]
 
@@ -85,7 +70,7 @@ function CallToAction() {
         <Reveal from="up" distance={18}>
           <p className="flex items-center justify-center gap-3">
             <span aria-hidden="true" className="h-px w-8 bg-linear-to-r from-transparent to-ember-500" />
-            <span className="font-display nums text-xs font-bold tracking-[0.32em] text-ember-500">05</span>
+            <span className="font-display nums text-xs font-bold tracking-[0.32em] text-ember-500">03</span>
             <span className="text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-white/55 sm:text-xs">
               Join the siege
             </span>
@@ -114,15 +99,30 @@ function CallToAction() {
           ))}
         </h2>
 
-        <Reveal from="up" delay={320} distance={22}>
-          <p className="mx-auto mt-7 max-w-lg text-base leading-relaxed text-white/60 sm:text-lg">
-            Nineteen home nights, one floor to protect. Season seats for 2025/26 go to members first —
-            take yours before the building fills.
-          </p>
+        <Reveal from="up" delay={520} distance={20}>
+          <a
+            href="mailto:blackfortresstbilsi@gmail.com"
+            className="group nums mt-10 inline-flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.18em] text-white/55 transition-colors duration-500 ease-[var(--ease-out-expo)] hover:text-ember-400"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.6}
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+              <path d="m3 6 9 6.5L21 6" />
+            </svg>
+            blackfortresstbilsi@gmail.com
+          </a>
         </Reveal>
 
         <Reveal from="up" delay={620} distance={20}>
-          <ul className="mt-10 flex items-center justify-center gap-3">
+          <ul className="mt-6 flex items-center justify-center gap-3">
             {socials.map((social) => (
               <li key={social.label}>
                 <a

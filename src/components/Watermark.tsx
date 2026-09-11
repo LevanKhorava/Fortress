@@ -37,7 +37,7 @@ function Watermark() {
       <img
         src={watermark}
         alt=""
-        className="absolute left-1/2 top-1/2 h-[95vmin] w-[95vmin] max-w-none opacity-[0.22]"
+        className="absolute left-1/2 top-1/2 h-[95vmin] w-[95vmin] max-w-none opacity-[0.1]"
         style={{ transform: `translate3d(-50%, calc(-50% + ${drift}px), 0)` }}
       />
     </div>

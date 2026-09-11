@@ -50,7 +50,7 @@ function Footer() {
             </div>
 
             <p className="nums mt-5 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-white/50">
-              Tbilisi · Founded 2025 · Superliga
+              Tbilisi · Founded 2025 · Superleague
             </p>
 
             <p className="mt-4 text-sm leading-relaxed text-white/45 sm:text-base">

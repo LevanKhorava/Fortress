@@ -1,49 +1,3 @@
-import playerHoward from "../assets/player-howard.jpg";
-import grid1 from "../assets/grid-1.jpg";
-
-export interface PlayerStat {
-  label: string;
-  value: string;
-}
-
-export interface Player {
-  id: string;
-  number: string;
-  first: string;
-  last: string;
-  position: string;
-  positionShort: string;
-  height: string;
-  from: string;
-  /** Cut-out portrait. Absent until the club's shoot lands — the card then
-   *  falls back to its numeral treatment over `backdrop`. */
-  photo?: string;
-  backdrop: string;
-  featured?: boolean;
-  line: PlayerStat[];
-}
-
-export const players: Player[] = [
-  {
-    id: "howard",
-    number: "12",
-    first: "Dwight",
-    last: "Howard",
-    position: "Center",
-    positionShort: "C",
-    height: "2.11 m",
-    from: "Atlanta, USA",
-    photo: playerHoward,
-    backdrop: grid1,
-    featured: true,
-    line: [
-      { label: "PPG", value: "18.4" },
-      { label: "RPG", value: "12.1" },
-      { label: "BPG", value: "2.3" },
-    ],
-  },
-];
-
 export type GameStatus = "tickets" | "sold-out" | "broadcast";
 
 export interface Game {
@@ -67,7 +21,7 @@ export const games: Game[] = [
     id: "g1",
     opponent: "KSU",
     abbr: "KSU",
-    competition: "Superliga",
+    competition: "Superleague · First Half",
     day: "Sun",
     date: "04",
     month: "Oct",
@@ -79,118 +33,118 @@ export const games: Game[] = [
   },
   {
     id: "g2",
-    opponent: "TBD",
-    abbr: "TBD",
-    competition: "Superliga",
+    opponent: "Iverioni",
+    abbr: "IVR",
+    competition: "Superleague · First Half",
     day: "Sat",
     date: "10",
     month: "Oct",
     time: "18:00",
-    venue: "The Fortress · Tbilisi Arena",
+    venue: "Tbilisi Arena",
     home: true,
     status: "tickets",
   },
   {
     id: "g3",
-    opponent: "TBD",
-    abbr: "TBD",
-    competition: "Superliga · New Arena Opener · Car Raffle",
+    opponent: "TSU",
+    abbr: "TSU",
+    competition: "Superleague · First Half",
     day: "Sat",
     date: "17",
     month: "Oct",
     time: "18:00",
-    venue: "The Fortress · Tbilisi Arena",
-    home: true,
+    venue: "A Hall",
+    home: false,
     status: "tickets",
   },
   {
     id: "g4",
-    opponent: "TBD",
-    abbr: "TBD",
-    competition: "Superliga",
+    opponent: "Telavi",
+    abbr: "TEL",
+    competition: "Superleague · First Half",
     day: "Sat",
     date: "24",
     month: "Oct",
     time: "18:00",
-    venue: "The Fortress · Tbilisi Arena",
+    venue: "Tbilisi Arena",
     home: true,
     status: "tickets",
   },
   {
     id: "g5",
-    opponent: "Orbi Tkibuli",
+    opponent: "Orbi",
     abbr: "ORB",
-    competition: "Superliga · Overnight Trip",
+    competition: "Superleague · First Half",
     day: "Sun",
     date: "01",
     month: "Nov",
     time: "14:00",
-    venue: "Orbi Tkibuli",
+    venue: "Tkibuli",
     home: false,
     status: "tickets",
   },
   {
     id: "g6",
-    opponent: "TBD",
-    abbr: "TBD",
-    competition: "Superliga",
+    opponent: "Rustavi",
+    abbr: "RUS",
+    competition: "Superleague · First Half",
     day: "Sat",
     date: "07",
     month: "Nov",
     time: "18:00",
-    venue: "The Fortress · Tbilisi Arena",
+    venue: "Tbilisi Arena",
     home: true,
     status: "tickets",
   },
   {
     id: "g7",
-    opponent: "Margveti Zestaponi",
+    opponent: "Margveti",
     abbr: "MGZ",
-    competition: "Superliga · Same-day Trip (TBD)",
+    competition: "Superleague · First Half",
     day: "Sun",
     date: "15",
     month: "Nov",
     time: "16:00",
-    venue: "Margveti Zestaponi",
+    venue: "Zestafoni",
     home: false,
     status: "tickets",
   },
   {
     id: "g8",
-    opponent: "TBD",
-    abbr: "TBD",
-    competition: "Superliga · Time TBD",
+    opponent: "Kutaisi",
+    abbr: "KUT",
+    competition: "Superleague · First Half",
     day: "Sat",
     date: "12",
     month: "Dec",
     time: "14:00",
-    venue: "The Fortress · Tbilisi Arena",
+    venue: "Tbilisi Arena",
     home: true,
     status: "tickets",
   },
   {
     id: "g9",
-    opponent: "Akhaltsikhe/Liberty",
+    opponent: "Akhaltsikhe",
     abbr: "AKH",
-    competition: "Superliga · Revenge Game",
+    competition: "Superleague · First Half",
     day: "Fri",
     date: "18",
     month: "Dec",
     time: "18:30",
-    venue: "Akhaltsikhe/Liberty",
+    venue: "Akhaltsikhe",
     home: false,
     status: "tickets",
   },
   {
     id: "g10",
-    opponent: "Reigning Champions",
-    abbr: "CHM",
-    competition: "Superliga · Car Raffle II · Pre–New Year",
+    opponent: "Batumi",
+    abbr: "BAT",
+    competition: "Superleague · First Half",
     day: "Sat",
     date: "26",
     month: "Dec",
     time: "14:00",
-    venue: "The Fortress · Tbilisi Arena",
+    venue: "Tbilisi Arena",
     home: true,
     status: "tickets",
   },
