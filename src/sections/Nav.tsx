@@ -54,7 +54,7 @@ function Nav() {
       <header
         className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color] duration-500 ease-[var(--ease-out-expo)] ${
           scrolled
-            ? "border-white/10 bg-ink-950/80 py-2.5 backdrop-blur-xl"
+            ? "border-white/10 bg-ink-950/95 py-2.5 sm:bg-ink-950/80 sm:backdrop-blur-xl"
             : "border-transparent bg-transparent py-4 sm:py-6"
         }`}
       >

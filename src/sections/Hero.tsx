@@ -99,19 +99,23 @@ function Hero() {
       </div>
 
       {/* 2 — ember bloom behind the figure. The drift keyframe owns the inner
-          transform, so the centring translate lives on the wrapper. */}
+          transform, so the centring translate lives on the wrapper. A big,
+          animated `blur()` is one of the heaviest things a phone GPU can be
+          asked to do every frame, so mobile gets a smaller, static glow and
+          only sm:+ gets the full drifting version. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-[-14%] left-1/2 -z-20 h-[min(88vh,860px)] w-[min(88vh,860px)] -translate-x-1/2 lg:left-[70%]"
+        className="pointer-events-none absolute bottom-[-14%] left-1/2 -z-20 h-[min(60vh,520px)] w-[min(60vh,520px)] -translate-x-1/2 sm:h-[min(88vh,860px)] sm:w-[min(88vh,860px)] lg:left-[70%]"
       >
-        <div className="h-full w-full rounded-full bg-ember-600/35 blur-[130px] animate-ember-drift" />
+        <div className="h-full w-full rounded-full bg-ember-600/35 blur-[70px] sm:blur-[130px] sm:animate-ember-drift" />
       </div>
 
       {/* Cool rim glow, opposite the ember bloom — steady, not drifting, so the
-          warm bloom stays the one moving accent. */}
+          warm bloom stays the one moving accent. Skipped on mobile: a second
+          large blurred layer costs real frame time for a subtle effect. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-[-10%] left-[8%] -z-20 h-[min(50vh,480px)] w-[min(50vh,480px)] rounded-full bg-[#1c3a56]/30 blur-[130px]"
+        className="pointer-events-none absolute top-[-10%] left-[8%] -z-20 hidden h-[min(50vh,480px)] w-[min(50vh,480px)] rounded-full bg-[#1c3a56]/30 blur-[130px] sm:block"
       />
 
       {/* 3 — oversized clipped wordmark, pure texture. */}
