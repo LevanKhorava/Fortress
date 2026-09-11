@@ -79,6 +79,7 @@ function Hero() {
             width={2200}
             height={1228}
             decoding="async"
+            fetchPriority="high"
             className="h-full w-full object-cover opacity-45"
             style={{ transform: `translate3d(0, ${offset * -42}px, 0) scale(1.12)` }}
           />

@@ -8,7 +8,10 @@
       name="description"
       content="Black Fortress — Tbilisi's basketball club. Roster, fixtures, season statistics and tickets for every night inside The Fortress."
     />
-    <meta property="og:title" content="Black Fortress — Welcome to The Fortress" />
+    <meta
+      property="og:title"
+      content="Black Fortress — Welcome to The Fortress"
+    />
     <meta
       property="og:description"
       content="Tbilisi's basketball club. Roster, fixtures and season statistics."
@@ -16,7 +19,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/og-image.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Black Fortress — Welcome to The Fortress" />
+    <meta
+      name="twitter:title"
+      content="Black Fortress — Welcome to The Fortress"
+    />
     <meta
       name="twitter:description"
       content="Tbilisi's basketball club. Roster, fixtures and season statistics."
@@ -26,10 +32,32 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Loaded non-blocking: the stylesheet fetch (and the font-file round
+         trip it kicks off to fonts.gstatic.com) would otherwise sit in front
+         of first paint. `media="print"` makes the browser fetch it at low
+         priority without applying it, then `onload` swaps it to `all`; the
+         `noscript` fallback covers the no-JS case. Fallback fonts render
+         immediately either way — `display=swap` just avoids invisible text
+         once the real font arrives. Barlow drops its unused 500 weight;
+         Barlow Condensed keeps its original set since About.tsx relies on
+         500 as the nearest match for one unweighted `font-display` label. -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;600;700&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;600;700&display=swap"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;600;700&display=swap"
+      />
+    </noscript>
 
     <title>Black Fortress — Welcome to The Fortress</title>
   </head>
