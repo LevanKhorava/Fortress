@@ -1,9 +1,6 @@
-import { useState } from 'react'
-import type { FormEvent } from 'react'
 import crowdDuotone from '../assets/crowd-duotone.jpg'
 import Grain from '../components/Grain.tsx'
 import Reveal from '../components/Reveal.tsx'
-import EmberButton from '../components/EmberButton.tsx'
 import { useParallax } from '../hooks/useParallax.ts'
 
 interface HeadlineLine {
@@ -54,14 +51,6 @@ const socials: Social[] = [
  */
 function CallToAction() {
   const [sectionRef, offset] = useParallax<HTMLElement>()
-  const [email, setEmail] = useState('')
-  const [joined, setJoined] = useState(false)
-
-  // Static landing page: nothing is sent anywhere, so the copy promises nothing.
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setJoined(true)
-  }
 
   return (
     <section
@@ -130,63 +119,6 @@ function CallToAction() {
             Nineteen home nights, one floor to protect. Season seats for 2025/26 go to members first —
             take yours before the building fills.
           </p>
-        </Reveal>
-
-        <Reveal from="up" delay={420} distance={22}>
-          <div className="mt-11 flex flex-wrap items-center justify-center gap-4 sm:gap-5">
-            <EmberButton href="#games">Season Tickets</EmberButton>
-            <EmberButton href="#membership" variant="ghost">
-              Become a Member
-            </EmberButton>
-          </div>
-        </Reveal>
-
-        <Reveal from="up" delay={520} distance={22}>
-          <form
-            id="membership"
-            onSubmit={onSubmit}
-            className="mx-auto mt-16 w-full max-w-xl scroll-mt-28 text-left"
-          >
-            <label
-              htmlFor="cta-email"
-              className="block text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-white/50"
-            >
-              Match-day dispatch
-            </label>
-            <div className="mt-4 flex items-end gap-4">
-              <input
-                id="cta-email"
-                name="email"
-                type="email"
-                required
-                autoComplete="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(event) => {
-                  setEmail(event.target.value)
-                  setJoined(false)
-                }}
-                className="font-display min-h-[44px] w-full flex-1 border-b border-white/20 bg-transparent pb-2 text-base uppercase tracking-[0.12em] text-white transition-colors duration-500 ease-[var(--ease-out-expo)] placeholder:text-white/25 focus:border-ember-500 sm:text-lg"
-              />
-              <button
-                type="submit"
-                className="font-display group flex min-h-[44px] shrink-0 items-center gap-2.5 border-b border-ember-500/50 pb-2 text-sm font-bold uppercase tracking-[0.2em] text-ember-500 transition-colors duration-500 ease-[var(--ease-out-expo)] hover:border-ember-400 hover:text-ember-300"
-              >
-                Join
-                <span
-                  aria-hidden="true"
-                  className="block h-px w-7 origin-left scale-x-[0.55] bg-current transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
-                />
-              </button>
-            </div>
-            {/* Reserved height so the confirmation never nudges the socials. */}
-            <p
-              aria-live="polite"
-              className="nums mt-3 min-h-[1.15rem] text-[0.68rem] font-semibold uppercase tracking-[0.26em] text-ember-400"
-            >
-              {joined ? "You're on the list." : ''}
-            </p>
-          </form>
         </Reveal>
 
         <Reveal from="up" delay={620} distance={20}>

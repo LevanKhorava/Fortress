@@ -8,13 +8,6 @@ import SectionHeading from '../components/SectionHeading.tsx'
 import { useReducedMotion } from '../hooks/useReducedMotion.ts'
 import arenaDeep from '../assets/arena-deep.jpg'
 
-/** Club-level figures. The cards below are the profiled starters, not the full 16. */
-const rosterMeta = [
-  { value: '16', label: 'Players' },
-  { value: '08', label: 'Nations' },
-  { value: '26', label: 'Average age' },
-]
-
 // Pointer hover, keyboard focus and the tap toggle all drive the same reveal,
 // so the three variants always travel together.
 const ON_RISE =
@@ -249,23 +242,8 @@ function Roster() {
                 The Men Inside <span className="text-outline">The Walls</span>
               </>
             }
-            lead="Eight nations, one contract: hold the line. These are the men who make the Fortress the hardest floor in the league to walk onto."
+            lead="One man, one job: hold the line. The first signing of a roster built to become the hardest floor in the league to walk onto."
           />
-
-          <Reveal from="right" delay={260} distance={20} className="shrink-0">
-            <ul className="flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-white/[0.07] pt-6 lg:justify-end lg:border-t-0 lg:pt-0">
-              {rosterMeta.map((item) => (
-                <li key={item.label} className="flex items-baseline gap-2.5">
-                  <span className="font-display nums text-2xl font-extrabold leading-none text-ember-500 sm:text-[1.7rem]">
-                    {item.value}
-                  </span>
-                  <span className="text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-white/50">
-                    {item.label}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5 lg:mt-20 lg:grid-cols-3">

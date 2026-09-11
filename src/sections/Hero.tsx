@@ -6,7 +6,7 @@ import Grain from '../components/Grain.tsx'
 import { useParallax } from '../hooks/useParallax.ts'
 import { useReducedMotion } from '../hooks/useReducedMotion.ts'
 
-const tickerWords = ['Welcome to the Fortress', 'Est. 2009', 'Tbilisi Arena', 'Superliga 2025/26']
+const tickerWords = ['Welcome to the Fortress', 'Est. 2025', 'Tbilisi Arena', 'Superliga 2025/26']
 
 /** Half of the marquee track — rendered twice so the -50% loop meets itself
  *  exactly. Three passes keep one half wider than the widest viewport.
@@ -122,6 +122,12 @@ function Hero() {
           height={1360}
           decoding="async"
           className="h-[66vh] max-h-[560px] w-auto max-w-[86vw] object-contain object-bottom opacity-30 sm:h-[74vh] sm:max-h-[780px] sm:opacity-40 lg:h-[86vh] lg:max-h-[1100px] lg:max-w-[46vw] lg:opacity-100"
+          style={{
+            maskImage: 'radial-gradient(at 50% 42%, black 52%, transparent 92%)',
+            WebkitMaskImage: 'radial-gradient(at 50% 42%, black 52%, transparent 92%)',
+            maskRepeat: 'no-repeat',
+            WebkitMaskRepeat: 'no-repeat',
+          }}
         />
       </div>
 
@@ -160,11 +166,11 @@ function Hero() {
         </h1>
 
         <p className="mt-7 max-w-md text-base leading-relaxed text-white/60 sm:text-lg" style={fade(560)}>
-          Seven titles. One arena. Nobody leaves Tbilisi with a win they did not bleed for.
+          New era, one arena. Nobody leaves Tbilisi with a win they did not bleed for.
         </p>
 
         <div className="mt-9 flex flex-wrap items-center gap-4 sm:mt-11" style={fade(680)}>
-          <EmberButton href="#team" variant="solid">
+          <EmberButton href="#about" variant="solid">
             Meet the Team
           </EmberButton>
           <EmberButton href="#games" variant="ghost">
