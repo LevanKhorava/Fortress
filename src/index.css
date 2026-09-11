@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+/* ============================================================
+   BLACK FORTRESS — design tokens
+   ============================================================ */
+@theme {
+  /* Type */
+  --font-display: "Barlow Condensed", "Oswald", "Arial Narrow", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Ink — the blacks. Depth comes from these, never from grey text. */
+  --color-ink-950: #050506;
+  --color-ink-900: #09090b;
+  --color-ink-850: #0e0e11;
+  --color-ink-800: #141418;
+  --color-ink-750: #1b1b20;
+  --color-ink-700: #24242a;
+  --color-ink-600: #33333b;
+  --color-ink-500: #4b4b55;
+
+  /* Ember — the orange. Accent only: highlights, rules, numerals, CTAs. */
+  --color-ember-200: #ffd6ad;
+  --color-ember-300: #ffb069;
+  --color-ember-400: #ff8c3a;
+  --color-ember-500: #f26b12;
+  --color-ember-600: #d4520a;
+  --color-ember-700: #a33c06;
+  --color-ember-900: #48190a;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+
+  --animate-shimmer: shimmer 3.5s linear infinite;
+  --animate-ember-drift: ember-drift 14s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 3.2s var(--ease-out-expo) infinite;
+  --animate-scan: scan 7s linear infinite;
+  --animate-ticker: ticker 38s linear infinite;
+  --animate-blink: blink 2s steps(1, end) infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+@keyframes ember-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+  50%      { transform: translate3d(2%, -3%, 0) scale(1.12); opacity: 0.85; }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.92); opacity: 0.8; }
+  70%  { transform: scale(1.25); opacity: 0; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+@keyframes scan {
+  0%   { transform: translateY(-110%); }
+  100% { transform: translateY(1100%); }
+}
+@keyframes ticker {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes blink {
+  0%, 60%  { opacity: 1; }
+  61%, 100% { opacity: 0.25; }
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-ink-950);
+  color: #fff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-ember-500);
+  color: var(--color-ink-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ember-400);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Thin branded scrollbar (progressive enhancement only) */
+@supports (scrollbar-color: red blue) {
+  html {
+    scrollbar-color: var(--color-ember-700) var(--color-ink-900);
+    scrollbar-width: thin;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+
+/* Film grain — tiled generated noise, sits above imagery, below text. */
+@utility grain {
+  position: relative;
+}
+@utility grain-layer {
+  background-image: url("./assets/grain.png");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+/* Outlined display type — the roster / stat numerals. */
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--color-ember-500) 70%, transparent);
+  paint-order: stroke fill;
+}
+@utility text-outline-thick {
+  color: transparent;
+  -webkit-text-stroke: 2px color-mix(in srgb, var(--color-ember-500) 80%, transparent);
+  paint-order: stroke fill;
+}
+@utility text-outline-white {
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(255 255 255 / 0.26);
+  paint-order: stroke fill;
+}
+
+/* Angular corner cut — the brand's structural motif (a fortress bastion). */
+@utility clip-bastion {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+}
+@utility clip-bastion-sm {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+@utility clip-blade {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+}
+
+/* Edge fades for full-bleed imagery. */
+@utility mask-fade-b {
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+@utility mask-fade-y {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+}
+@utility mask-fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* Tabular numerals keep animated counters from jittering. */
+@utility nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Hairline rules used across section headers. */
+@utility rule-ember {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-ember-500) 90%, transparent),
+    transparent
+  );
+}
+
+/* ============================================================
+   Motion preferences — honour the OS setting everywhere.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
