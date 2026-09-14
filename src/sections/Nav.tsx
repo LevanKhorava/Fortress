@@ -68,7 +68,7 @@ function Nav() {
             <img
               src={fortress}
               alt="Black Fortress"
-              className="h-[80px] w-[100px] shrink-0"
+              className="w-[70px] h-[75px] md:h-[100px] md:w-[100px] shrink-0"
             />
           </a>
 

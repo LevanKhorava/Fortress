@@ -54,8 +54,8 @@ function Footer() {
             </p>
 
             <p className="mt-4 text-sm leading-relaxed text-white/45 sm:text-base">
-              Home games are played at The Fortress — Tbilisi Arena, 11,400
-              seats deep and never once quiet in the fourth.
+              Home games are played at The Fortress — Tbilisi Arena, 9,600 seats
+              deep and never once quiet in the fourth.
             </p>
           </div>
         </Reveal>
@@ -66,14 +66,14 @@ function Footer() {
               © {year} Black Fortress Basketball Club. All rights reserved.
             </p>
 
-            <p className="order-first text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-white/55 sm:order-none">
+            {/* <p className="order-first text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-white/55 sm:order-none">
               <span className="text-white/45">Partners</span>{" "}
               <span className="text-white/70">Axion</span>{" "}
               <span aria-hidden="true" className="text-ember-500">
                 ·
               </span>{" "}
               <span className="text-white/70">Altitude</span>
-            </p>
+            </p> */}
           </div>
         </Reveal>
       </div>

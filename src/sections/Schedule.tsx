@@ -364,7 +364,7 @@ function Schedule() {
                     {game.venue}
                   </span>
                   <span
-                    className={`font-display shrink-0 px-2 py-1 text-[0.58rem] font-bold uppercase tracking-[0.22em] lg:justify-self-center ${
+                    className={`font-display shrink-0 pl-[calc(0.5rem+0.22em)] pr-2 py-1 text-[20px] md:text-[30px] font-bold uppercase tracking-[0.22em] lg:justify-self-center ${
                       game.home
                         ? "text-ember-400 ring-1 ring-ember-500/35"
                         : "text-white/35 ring-1 ring-white/10"
