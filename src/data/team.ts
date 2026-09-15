@@ -6,6 +6,8 @@ import logoRustavi from "../assets/clubs/rustavi.png";
 import logoMargveti from "../assets/clubs/margveti.png";
 import logoKutaisi from "../assets/clubs/kutaisi.png";
 import logoBatumi from "../assets/clubs/batumi.png";
+import logoKsu from "../assets/clubs/ksu.jpeg";
+import logoAkhaltsikhe from "../assets/clubs/akhaltsikhe.jpeg";
 
 export type GameStatus = "tickets" | "sold-out" | "broadcast";
 
@@ -21,7 +23,7 @@ export interface Game {
   venue: string;
   home: boolean;
   status: GameStatus;
-  /** Opponent crest; omitted where no club asset exists yet (KSU, Akhaltsikhe). */
+  /** Opponent crest, also shown in the countdown UI for the next fixture. */
   logo?: string;
   /** Shown on the next fixture only. */
   next?: boolean;
@@ -40,6 +42,7 @@ export const games: Game[] = [
     venue: "KSU",
     home: false,
     status: "tickets",
+    logo: logoKsu,
     next: true,
   },
   {
@@ -152,6 +155,7 @@ export const games: Game[] = [
     venue: "Akhaltsikhe",
     home: false,
     status: "tickets",
+    logo: logoAkhaltsikhe,
   },
   {
     id: "g10",

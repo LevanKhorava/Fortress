@@ -1,13 +1,18 @@
-import { useEffect, useState } from 'react'
-import arenaDuotone from '../assets/arena-duotone.jpg'
-import howardFigure from '../assets/howard-figure.webp'
-import fortress from '../assets/fortress.png'
-import EmberButton from '../components/EmberButton.tsx'
-import Grain from '../components/Grain.tsx'
-import { useParallax } from '../hooks/useParallax.ts'
-import { useReducedMotion } from '../hooks/useReducedMotion.ts'
+import { useEffect, useState } from "react";
+import arenaDuotone from "../assets/arena-duotone.jpg";
+import howardFigure from "../assets/howard-figure.webp";
+import fortress from "../assets/fortress.png";
+import EmberButton from "../components/EmberButton.tsx";
+import Grain from "../components/Grain.tsx";
+import { useParallax } from "../hooks/useParallax.ts";
+import { useReducedMotion } from "../hooks/useReducedMotion.ts";
 
-const tickerWords = ['Welcome to the Fortress', 'Est. 2025', 'Tbilisi Arena', 'Superleague 26/27']
+const tickerWords = [
+  "Welcome to the Fortress",
+  "Est. 2025",
+  "Tbilisi Arena",
+  "Superleague 26/27",
+];
 
 /** Half of the marquee track — rendered twice so the -50% loop meets itself
  *  exactly. Three passes keep one half wider than the widest viewport.
@@ -20,45 +25,71 @@ function TickerHalf() {
     <div className="flex shrink-0 items-center gap-6 pr-6 sm:gap-10 sm:pr-10">
       {[0, 1, 2].map((pass) =>
         tickerWords.map((word) => (
-          <span key={`${pass}-${word}`} className="flex shrink-0 items-center gap-6 sm:gap-10">
+          <span
+            key={`${pass}-${word}`}
+            className="flex shrink-0 items-center gap-6 sm:gap-10"
+          >
             <span>{word}</span>
-            <span aria-hidden="true" className="h-1 w-1 shrink-0 rounded-full bg-ember-500" />
+            <span
+              aria-hidden="true"
+              className="h-1 w-1 shrink-0 rounded-full bg-ember-500"
+            />
           </span>
         )),
       )}
     </div>
-  )
+  );
+}
+
+function BellIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6 6 0 0 0-4-5.659V5a2 2 0 1 0-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 1 1-6 0v-1m6 0H9" />
+    </svg>
+  );
 }
 
 function Hero() {
-  const [backdropRef, offset] = useParallax<HTMLDivElement>()
-  const reduced = useReducedMotion()
-  const [mounted, setMounted] = useState(false)
+  const [backdropRef, offset] = useParallax<HTMLDivElement>();
+  const reduced = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
 
   // Page-load choreography runs one frame after paint so the first frame is the
   // "before" state rather than a flash of the finished lockup.
   useEffect(() => {
-    const frame = requestAnimationFrame(() => setMounted(true))
-    return () => cancelAnimationFrame(frame)
-  }, [])
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
-  const shown = mounted || reduced
+  const shown = mounted || reduced;
 
   // 112%, not 104%: `leading-[0.82]` makes the line box shorter than the glyphs,
   // so the caps plus the 2px text stroke sit slightly proud of it. The extra
   // travel keeps the "before" state fully behind the mask on any fallback font.
   const lift = (delay: number) => ({
-    transform: shown ? 'translate3d(0, 0, 0)' : 'translate3d(0, 112%, 0)',
-    transition: reduced ? undefined : `transform 1150ms var(--ease-out-expo) ${delay}ms`,
-  })
+    transform: shown ? "translate3d(0, 0, 0)" : "translate3d(0, 112%, 0)",
+    transition: reduced
+      ? undefined
+      : `transform 1150ms var(--ease-out-expo) ${delay}ms`,
+  });
 
   const fade = (delay: number, y = 18) => ({
     opacity: shown ? 1 : 0,
-    transform: shown ? 'translate3d(0, 0, 0)' : `translate3d(0, ${y}px, 0)`,
+    transform: shown ? "translate3d(0, 0, 0)" : `translate3d(0, ${y}px, 0)`,
     transition: reduced
       ? undefined
       : `opacity 800ms var(--ease-out-expo) ${delay}ms, transform 800ms var(--ease-out-expo) ${delay}ms`,
-  })
+  });
 
   return (
     <section
@@ -68,10 +99,14 @@ function Hero() {
       {/* 1 — arena plate. A slow idle drift (independent transform on the
           wrapper) layers over the scroll-linked parallax on the image itself,
           so the two never fight for the same `transform`. */}
-      <div ref={backdropRef} aria-hidden="true" className="absolute inset-0 -z-30 overflow-hidden">
+      <div
+        ref={backdropRef}
+        aria-hidden="true"
+        className="absolute inset-0 -z-30 overflow-hidden"
+      >
         <div
           className="absolute inset-0 animate-ember-drift"
-          style={{ animationDuration: '24s', animationDirection: 'alternate' }}
+          style={{ animationDuration: "24s", animationDirection: "alternate" }}
         >
           <img
             src={arenaDuotone}
@@ -81,7 +116,9 @@ function Hero() {
             decoding="async"
             fetchPriority="high"
             className="h-full w-full object-cover opacity-45"
-            style={{ transform: `translate3d(0, ${offset * -42}px, 0) scale(1.12)` }}
+            style={{
+              transform: `translate3d(0, ${offset * -42}px, 0) scale(1.12)`,
+            }}
           />
         </div>
         {/* Cool steel wash on one side, balancing the ember glow's warmth on the other. */}
@@ -124,7 +161,9 @@ function Hero() {
         className="pointer-events-none absolute inset-x-0 bottom-[14%] -z-20 select-none"
         style={{
           opacity: shown ? 1 : 0,
-          transition: reduced ? undefined : 'opacity 1600ms var(--ease-out-expo) 500ms',
+          transition: reduced
+            ? undefined
+            : "opacity 1600ms var(--ease-out-expo) 500ms",
         }}
       >
         <span className="font-display block whitespace-nowrap text-center text-[27vw] font-black uppercase leading-[0.8] tracking-[-0.045em] text-outline-thick opacity-[0.09]">
@@ -140,10 +179,10 @@ function Hero() {
         className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 flex origin-bottom items-center justify-center gap-6 sm:gap-8 lg:justify-end lg:gap-12 lg:pr-[5vw]"
         style={{
           opacity: shown ? 1 : 0,
-          transform: shown ? 'scale(1)' : 'scale(1.06)',
+          transform: shown ? "scale(1)" : "scale(1.06)",
           transition: reduced
             ? undefined
-            : 'opacity 1400ms var(--ease-out-expo) 100ms, transform 1600ms var(--ease-out-expo) 100ms',
+            : "opacity 1400ms var(--ease-out-expo) 100ms, transform 1600ms var(--ease-out-expo) 100ms",
         }}
       >
         <img
@@ -157,12 +196,14 @@ function Hero() {
           width={604}
           height={1360}
           decoding="async"
-          className="h-[66vh] max-h-[560px] w-auto max-w-[70vw] object-contain object-bottom opacity-25 sm:h-[74vh] sm:max-h-[780px] sm:max-w-[60vw] sm:opacity-30 lg:h-[86vh] lg:max-h-[1100px] lg:max-w-[42vw] lg:opacity-45"
+          className="h-[80vh] max-h-170 w-auto max-w-[88vw] object-contain object-bottom opacity-25 sm:h-[74vh] sm:max-h-[780px] sm:max-w-[60vw] sm:opacity-30 lg:h-[86vh] lg:max-h-[1100px] lg:max-w-[42vw] lg:opacity-45"
           style={{
-            maskImage: 'radial-gradient(at 50% 45%, black 20%, transparent 68%)',
-            WebkitMaskImage: 'radial-gradient(at 50% 45%, black 20%, transparent 68%)',
-            maskRepeat: 'no-repeat',
-            WebkitMaskRepeat: 'no-repeat',
+            maskImage:
+              "radial-gradient(at 50% 45%, black 20%, transparent 68%)",
+            WebkitMaskImage:
+              "radial-gradient(at 50% 45%, black 20%, transparent 68%)",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
           }}
         />
       </div>
@@ -175,17 +216,16 @@ function Hero() {
       <Grain />
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pt-36 pb-28 sm:px-8 sm:pt-40 lg:px-14 lg:pb-40">
-        <img
-          src={fortress}
-          alt="Black Fortress"
-          className="mx-auto mb-6 h-16 w-auto object-contain sm:hidden"
-          style={fade(20, 14)}
-        />
-
         <div className="flex items-center gap-3" style={fade(60, 14)}>
           <span className="relative flex h-2.5 w-2.5 items-center justify-center">
-            <span aria-hidden="true" className="absolute inset-0 rounded-full bg-ember-500/35 animate-pulse-ring" />
-            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-ember-500 animate-blink" />
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 rounded-full bg-ember-500/35 animate-pulse-ring"
+            />
+            <span
+              aria-hidden="true"
+              className="h-1.5 w-1.5 rounded-full bg-ember-500 animate-blink"
+            />
           </span>
           <span aria-hidden="true" className="h-px w-8 rule-ember" />
           <span className="nums text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-white/50 sm:tracking-[0.34em]">
@@ -197,7 +237,7 @@ function Hero() {
           className="font-display mt-6 text-[clamp(3.2rem,13vw,11rem)] font-black uppercase leading-[0.82] tracking-[-0.02em] sm:mt-8"
           style={{
             filter:
-              'drop-shadow(0 0 46px rgba(242,107,18,0.35)) drop-shadow(0 10px 26px rgba(0,0,0,0.65))',
+              "drop-shadow(0 0 46px rgba(242,107,18,0.35)) drop-shadow(0 10px 26px rgba(0,0,0,0.65))",
           }}
         >
           {/* Each line is masked by its own overflow box; the padding gives the
@@ -214,17 +254,67 @@ function Hero() {
           </span>
         </h1>
 
-        <p className="mt-7 max-w-md text-base leading-relaxed text-white/60 sm:text-lg" style={fade(560)}>
-          New era, one arena. Nobody leaves Tbilisi with a win they did not bleed for.
+        <p
+          className="mt-7 max-w-md text-base leading-relaxed text-white/60 sm:text-lg"
+          style={fade(560)}
+        >
+          New era, one arena. Nobody leaves Tbilisi with a win they did not
+          bleed for.
         </p>
 
-        <div className="mt-9 flex flex-wrap items-center gap-4 sm:mt-11" style={fade(680)}>
+        <div
+          className="mt-9 flex flex-wrap items-center gap-4 sm:mt-11"
+          style={fade(680)}
+        >
           <EmberButton href="#about" variant="solid">
             Meet the Team
           </EmberButton>
           <EmberButton href="#next-game" variant="ghost">
             Next Game
           </EmberButton>
+        </div>
+
+        <div
+          className="clip-bastion-sm relative mt-8 flex w-full items-center gap-4 overflow-hidden border border-ember-500/25 bg-ink-900/60 px-5 py-4 backdrop-blur-sm sm:mt-11 sm:w-auto sm:max-w-md lg:absolute lg:top-40 lg:right-[220px] lg:mt-0 lg:w-full lg:max-w-md lg:items-start lg:gap-5 lg:px-7 lg:py-6 lg:shadow-[0_24px_70px_-18px_rgba(242,107,18,0.35)]"
+          style={fade(800)}
+        >
+          <span
+            aria-hidden="true"
+            className="absolute inset-y-0 left-0 w-[2px] bg-linear-to-b from-transparent via-ember-500/70 to-transparent lg:w-1"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 bg-linear-to-r from-ember-500/10 via-transparent to-transparent"
+          />
+          <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ember-500/15 ring-1 ring-ember-500/40 lg:h-16 lg:w-16">
+            <BellIcon className="h-5 w-5 text-ember-400 lg:h-7 lg:w-7" />
+          </span>
+          <span className="relative min-w-0">
+            <span className="flex items-center gap-2">
+              <span className="relative flex h-1.5 w-1.5">
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 rounded-full bg-ember-500/70 animate-pulse-ring"
+                />
+                <span
+                  aria-hidden="true"
+                  className="relative block h-1.5 w-1.5 rounded-full bg-ember-500"
+                />
+              </span>
+              <span className="font-display text-[0.6rem] font-bold uppercase tracking-[0.3em] text-ember-400 lg:text-xs lg:tracking-[0.34em]">
+                Announcement
+              </span>
+            </span>
+            <p className="font-display mt-1.5 text-sm font-extrabold uppercase leading-snug tracking-tight text-white sm:text-base lg:mt-2.5 lg:text-2xl">
+              Ticket sales open{" "}
+              <span className="text-ember-400">September 20</span>
+            </p>
+            <p className="mt-1 text-xs leading-snug text-white/55 sm:text-sm lg:mt-2 lg:text-base">
+              Exclusively through the{" "}
+              <span className="font-semibold text-white/75">Spectra</span> web
+              app
+            </p>
+          </span>
         </div>
       </div>
 
@@ -241,7 +331,7 @@ function Hero() {
         </span>
       </div>
 
-      <div className="relative z-10 w-full border-t border-white/[0.07] bg-ink-950/55 backdrop-blur-sm">
+      <div className="relative z-10 mt-auto w-full border-t border-white/[0.07] bg-ink-950/55 backdrop-blur-sm sm:mt-0">
         <div className="group flex overflow-hidden py-3.5">
           <div
             aria-hidden="true"
@@ -253,7 +343,7 @@ function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Hero
+export default Hero;
