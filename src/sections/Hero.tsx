@@ -311,8 +311,7 @@ function Hero() {
             </p>
             <p className="mt-1 text-xs leading-snug text-white/55 sm:text-sm lg:mt-2 lg:text-base">
               Exclusively through the{" "}
-              <span className="font-semibold text-white/75">Spectra</span> web
-              app
+              <span className="font-semibold text-white/75">Spectra</span>
             </p>
           </span>
         </div>
