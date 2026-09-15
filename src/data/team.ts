@@ -1,3 +1,12 @@
+import logoIverioni from "../assets/clubs/iverioni.png";
+import logoTsu from "../assets/clubs/tsu.png";
+import logoTelavi from "../assets/clubs/telavi.png";
+import logoOrbi from "../assets/clubs/orbi.jpg";
+import logoRustavi from "../assets/clubs/rustavi.png";
+import logoMargveti from "../assets/clubs/margveti.png";
+import logoKutaisi from "../assets/clubs/kutaisi.png";
+import logoBatumi from "../assets/clubs/batumi.png";
+
 export type GameStatus = "tickets" | "sold-out" | "broadcast";
 
 export interface Game {
@@ -12,6 +21,8 @@ export interface Game {
   venue: string;
   home: boolean;
   status: GameStatus;
+  /** Opponent crest; omitted where no club asset exists yet (KSU, Akhaltsikhe). */
+  logo?: string;
   /** Shown on the next fixture only. */
   next?: boolean;
 }
@@ -43,6 +54,7 @@ export const games: Game[] = [
     venue: "Tbilisi Arena",
     home: true,
     status: "tickets",
+    logo: logoIverioni,
   },
   {
     id: "g3",
@@ -56,6 +68,7 @@ export const games: Game[] = [
     venue: "Tbilisi Arena",
     home: false,
     status: "tickets",
+    logo: logoTsu,
   },
   {
     id: "g4",
@@ -69,6 +82,7 @@ export const games: Game[] = [
     venue: "Old Sports Palace.",
     home: true,
     status: "tickets",
+    logo: logoTelavi,
   },
   {
     id: "g5",
@@ -82,6 +96,7 @@ export const games: Game[] = [
     venue: "Tkibuli",
     home: false,
     status: "tickets",
+    logo: logoOrbi,
   },
   {
     id: "g6",
@@ -95,6 +110,7 @@ export const games: Game[] = [
     venue: "Tbilisi Arena",
     home: true,
     status: "tickets",
+    logo: logoRustavi,
   },
   {
     id: "g7",
@@ -108,6 +124,7 @@ export const games: Game[] = [
     venue: "Zestafoni",
     home: false,
     status: "tickets",
+    logo: logoMargveti,
   },
   {
     id: "g8",
@@ -121,6 +138,7 @@ export const games: Game[] = [
     venue: "Tbilisi Arena",
     home: true,
     status: "tickets",
+    logo: logoKutaisi,
   },
   {
     id: "g9",
@@ -147,6 +165,7 @@ export const games: Game[] = [
     venue: "Tbilisi Arena",
     home: true,
     status: "tickets",
+    logo: logoBatumi,
   },
 ];
 

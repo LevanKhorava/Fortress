@@ -6,6 +6,7 @@ import SectionHeading from "../components/SectionHeading.tsx";
 import Grain from "../components/Grain.tsx";
 import { useReducedMotion } from "../hooks/useReducedMotion.ts";
 import crowdDuotone from "../assets/crowd-duotone.jpg";
+import fortressLogo from "../assets/fortress.png";
 
 const MONTHS = [
   "Jan",
@@ -207,8 +208,17 @@ function Schedule() {
                   <span className="block text-[0.6rem] font-semibold uppercase tracking-[0.34em] text-white/40">
                     {nextGame.home ? "Home side" : "On the road"}
                   </span>
-                  <span className="font-display mt-2 block text-[clamp(1.85rem,6.5vw,3.9rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white">
-                    Black Fortress
+                  <span className="mt-2 flex items-center justify-center gap-3 sm:justify-start">
+                    <img
+                      src={fortressLogo}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      className="h-10 w-10 shrink-0 object-contain sm:h-14 sm:w-14"
+                    />
+                    <span className="font-display block text-[clamp(1.85rem,6.5vw,3.9rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white">
+                      Black Fortress
+                    </span>
                   </span>
                 </span>
 
@@ -228,8 +238,19 @@ function Schedule() {
                   <span className="font-display nums block text-[0.6rem] font-semibold uppercase tracking-[0.34em] text-white/40">
                     {nextGame.abbr}
                   </span>
-                  <span className="font-display mt-2 block text-[clamp(1.85rem,6.5vw,3.9rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white/85">
-                    {nextGame.opponent}
+                  <span className="mt-2 flex items-center justify-center gap-3 sm:justify-end">
+                    {nextGame.logo && (
+                      <img
+                        src={nextGame.logo}
+                        alt=""
+                        aria-hidden="true"
+                        loading="lazy"
+                        className="h-10 w-10 shrink-0 object-contain sm:h-14 sm:w-14 sm:order-2"
+                      />
+                    )}
+                    <span className="font-display block text-[clamp(1.85rem,6.5vw,3.9rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white/85">
+                      {nextGame.opponent}
+                    </span>
                   </span>
                 </span>
               </h3>
@@ -349,13 +370,24 @@ function Schedule() {
                   </span>
                 </span>
 
-                <span className="relative block min-w-0 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5">
-                  <span className="font-display flex items-center gap-2 text-lg font-extrabold uppercase leading-tight tracking-tight text-white sm:text-2xl">
-                    <span className="truncate">{game.opponent}</span>
-                    <Arrow className="hidden h-4 w-4 shrink-0 -translate-x-2 text-ember-500 opacity-0 transition-[transform,opacity] duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 sm:block" />
-                  </span>
-                  <span className="nums mt-1 block truncate text-xs text-white/45 sm:text-sm">
-                    {game.competition} · {game.time}
+                <span className="relative flex min-w-0 items-center gap-3 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5">
+                  {game.logo && (
+                    <img
+                      src={game.logo}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10"
+                    />
+                  )}
+                  <span className="min-w-0">
+                    <span className="font-display flex items-center gap-2 text-lg font-extrabold uppercase leading-tight tracking-tight text-white sm:text-2xl">
+                      <span className="truncate">{game.opponent}</span>
+                      <Arrow className="hidden h-4 w-4 shrink-0 -translate-x-2 text-ember-500 opacity-0 transition-[transform,opacity] duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 sm:block" />
+                    </span>
+                    <span className="nums mt-1 block truncate text-xs text-white/45 sm:text-sm">
+                      {game.competition} · {game.time}
+                    </span>
                   </span>
                 </span>
 
