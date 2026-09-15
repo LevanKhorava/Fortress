@@ -43,7 +43,11 @@ function Footer() {
           <div className="mt-14 max-w-sm sm:mt-16">
             <div className="flex items-center gap-3">
               {/* Decorative: the wordmark beside it already names the club. */}
-              <img src={fortress} alt="Fortress" className="h-14 w-20 " />
+              <img
+                src={fortress}
+                alt="Fortress"
+                className="w-[70px] h-[75px] md:h-[100px] md:w-[100px]  "
+              />
               <span className="font-display text-xl font-extrabold uppercase leading-none tracking-tight text-white">
                 Black Fortress
               </span>
