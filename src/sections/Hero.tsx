@@ -307,10 +307,10 @@ function Hero() {
             </span>
             <p className="font-display mt-1.5 text-sm font-extrabold uppercase leading-snug tracking-tight text-white sm:text-base lg:mt-2.5 lg:text-2xl">
               Ticket sales open{" "}
-              <span className="text-ember-400">September 20</span>
+              <span className="text-ember-400">September 22</span>
             </p>
             <p className="mt-1 text-xs leading-snug text-white/55 sm:text-sm lg:mt-2 lg:text-base">
-              Exclusively through the{" "}
+              Exclusively through{" "}
               <span className="font-semibold text-white/75">Spectra</span>
             </p>
           </span>
